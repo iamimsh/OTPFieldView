@@ -63,6 +63,7 @@ import UIKit
     public var secureEntry: Bool = false
     public var hideEnteredText: Bool = false
     public var requireCursor: Bool = false
+    public var shouldAutoResign: Bool = false
     public var cursorColor: UIColor = UIColor.blue
     public var fieldSize: CGFloat = 55
     public var separatorSpace: CGFloat = 20
@@ -295,7 +296,9 @@ extension OTPFieldView: UITextFieldDelegate {
                 nextOTPField.becomeFirstResponder()
             }
             else {
-                textField.resignFirstResponder()
+                if shouldAutoResign {
+                    textField.resignFirstResponder()
+                }
             }
             
             // Get the entered string
